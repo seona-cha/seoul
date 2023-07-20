@@ -26,11 +26,9 @@ const Slider1 = new Swiper(".sc-visual .swiper",{
         // 인덱스값에 따라 탭 클래스 컨트롤
         slideChange: function(){
             if(Slider1.realIndex <= 3){
-                $(`.news-btn`).addClass(`on`);
-                $(`.citizen-btn`).removeClass(`on`);
+                $(`.news-btn`).addClass(`on`).siblings().removeClass(`on`);
             }else{
-                $(`.citizen-btn`).addClass(`on`);
-                $(`.news-btn`).removeClass(`on`);
+                $(`.citizen-btn`).addClass(`on`).siblings().removeClass(`on`);
             };
         }
     }
