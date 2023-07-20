@@ -1,6 +1,11 @@
+// 언어 선택
+$('#langBtn').click(function(){
+    url = $('#languageList').val();
+    window.open(url);
+})
 
 // 비주얼 슬라이더
-const Slider1 = new Swiper(".visual-slide .swiper",{
+const Slider1 = new Swiper(".sc-visual .swiper",{
     loop:true,
     autoplay:{
         delay:4000,
@@ -21,11 +26,11 @@ const Slider1 = new Swiper(".visual-slide .swiper",{
         // 인덱스값에 따라 탭 클래스 컨트롤
         slideChange: function(){
             if(Slider1.realIndex <= 3){
-                $(`.slide-news-btn`).addClass(`on`);
-                $(`.slide-citizen-btn`).removeClass(`on`);
+                $(`.news-btn`).addClass(`on`);
+                $(`.citizen-btn`).removeClass(`on`);
             }else{
-                $(`.slide-citizen-btn`).addClass(`on`);
-                $(`.slide-news-btn`).removeClass(`on`);
+                $(`.citizen-btn`).addClass(`on`);
+                $(`.news-btn`).removeClass(`on`);
             };
         }
     }
@@ -48,8 +53,8 @@ slider1_pause.click(function(){
 })
 
 // 주요뉴스, 시민참여 탭
-const news_btn = $(`.slide-news-btn`);
-const citizen_btn = $(`.slide-citizen-btn`);
+const news_btn = $(`.news-btn`);
+const citizen_btn = $(`.citizen-btn`);
 
 news_btn.click(function(){
     Slider1.slideToLoop(0);
@@ -74,10 +79,32 @@ $(`.related-item .open-btn`).click(function(e){
         $(this).next().addClass(`on`);
     }
 });
+// 첫번째 버튼에서 shift+tab 버튼 누를시 닫히기
+$(`.related-item .site-list a:first-child`).keydown(function(e){
+    if(e.keyCode === 9 && e.shiftKey){
+        $(`.site-area`).removeClass(`on`);
+        $(`.open-btn`).removeClass(`on`);
+    }
+})
+// 마지막 버튼에서 tab 버튼 누를시 닫히기
+$(`.related-item .site-list a:last-child`).keydown(function(e){
+    if(e.keyCode === 9 && !e.shiftKey){
+        $(`.site-area`).removeClass(`on`);
+        $(`.open-btn`).removeClass(`on`);
+    }
+})
+//바깥 영역 클릭시 닫히기
+$(document).click(function(e){
+    if($(`.sc-related`
+    ).has(e.target).length === 0){
+        $(`.site-area`).removeClass(`on`);
+        $(`.open-btn`).removeClass(`on`);
+    }
+})
 
 
 // 배너 슬라이드
-const Slider2 = new Swiper(".banner-group .swiper",{
+const Slider2 = new Swiper(".sc-banner .swiper",{
     loop:true,
     slidesPerView:3,
     spaceBetween: 43,
@@ -86,8 +113,8 @@ const Slider2 = new Swiper(".banner-group .swiper",{
         disableOnInteraction: false        
     },
     navigation:{
-        nextEl:".banner-group .next",
-        prevEl:".banner-group .prev"
+        nextEl:".sc-banner .next",
+        prevEl:".sc-banner .prev"
     },
     pagination:{
         el:".pagination",
@@ -96,8 +123,8 @@ const Slider2 = new Swiper(".banner-group .swiper",{
     
 });
 // 재생, 정지 버튼
-const slider2_start = $(`.banner-group .play`);
-const slider2_pause = $(`.banner-group .pause`);
+const slider2_start = $(`.sc-banner .play`);
+const slider2_pause = $(`.sc-banner .pause`);
 
 slider2_start.click(function(){
     Slider2.autoplay.start();

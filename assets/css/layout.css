@@ -103,12 +103,12 @@ figcaption{
     position: relative;
     height: 120px;
 }
-.header .lang-box{
+.header .lang-area{
     display: flex;
     position: absolute;
     top: 0;right: 0;
 }
-.header #language{
+.header #languageList{
     width: 80px;
     height: 21px;
     border: 1px solid #AFCFEA;
@@ -129,7 +129,7 @@ figcaption{
     padding: 0 6px;
 }
 
-.header .logo2{
+.header .slogun-area{
     width: 133px;
     height: 51px;
     background: url(../images/seoul-slogan.png) no-repeat;
@@ -137,7 +137,11 @@ figcaption{
 }
 
 /* 검색 영역 */
-.header .search-area{
+.search-area fieldset {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    border: none;
     display: grid;
     grid-template-columns: 1fr 35px 35px;
     gap: 3px;
@@ -171,47 +175,56 @@ figcaption{
     margin-left: auto;
 }
 
-.weather-area p+p {
-    margin-top: 11px;
+.weather-area .info-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
 }
-.weather-area .temp {
+.weather-area .temp-box em {
     font-size: 25px;
     font-weight: 600;
     margin-right: 10px;
 }
-.weather-area .weather {
+.weather-area span {
     letter-spacing: -0.1em;
 }
-.weather-area .hazy {
+.weather-area .dust-box {
     font-size: 13px;
-    letter-spacing: -0.1em;}
-.weather-area .fine {
+    letter-spacing: -0.1em;
+}
+.weather-area .state {
     font-size: 14px;
-    color: #0068b7;
     margin: 0 5px 0 2px;
+}
+.weather-area .fine { 
+    color: #0068b7;
 }
 /* -- 헤더 하단 */
 
 
 
 /* 푸터 */
-.footer-menu{
+.footer .group-link{
+    display: flex;
+    justify-content: space-between;
+}
+.footer .util-menu{
     display: flex;
     gap: 20px;
     align-items: center;
     height: 50px;
 }
-.footer-menu li{
+.footer .util-menu li{
     position: relative;
     font-size: 12px;
     color: #636363;
     letter-spacing: -0.05em;
 }
-.footer-menu li strong{
+.footer .util-menu li strong{
     font-weight: 700;
     color: #000;
 }
-.footer-menu li+li:before{
+.footer .util-menu li+li:before{
     position: absolute;
     top: 50%; left: -10px;
     transform: translateY(-50%);
@@ -250,7 +263,9 @@ figcaption{
 .footer .sns-area .youtube:hover{ background-position: -125px -25px; }
 .footer .sns-area .naverblog:hover{ background-position: -150px -25px; }
 
-.footer .inner+.inner{
+.footer .group-info{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     border-top: 1px solid #ccc;
     padding: 20px 0 22px;
@@ -279,7 +294,7 @@ figcaption{
     line-height: 14px;
     letter-spacing: -0.055em;
 }
-.footer .web-accessibility{
+.footer .mark-area{
     margin-left: auto;
 }
 
